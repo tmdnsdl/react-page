@@ -9,11 +9,11 @@ function App() {
                 <p>너구리 React APP</p>
                 <a
                     className="App-link"
-                    href="https://reactjs.org"
+                    href="https://tmdnsdl.github.io/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Learn React
+                    너구리 블로그
                 </a>
             </header>
         </div>
