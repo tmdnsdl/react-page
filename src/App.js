@@ -31,10 +31,10 @@ function App() {
             <header className="App-header">
                 <p>고양이 탐색기</p>
                 {loading ? (
-                    <img src={loadingImg} class="loading" />
+                    <img src={loadingImg} className="loading" />
                 ) : (
-                    <div class="cat-box">
-                        <img src={cat} class="cat-image" />
+                    <div className="cat-box">
+                        <img src={cat} className="cat-image" />
                     </div>
                 )}
                 <div style={{ marginTop: "20px" }}>
