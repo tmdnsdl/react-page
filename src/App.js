@@ -3,11 +3,9 @@ import share from "./share.png";
 import loadingImg from "./loading.gif";
 import { useEffect, useState } from "react";
 import "./App.css";
-
 function App() {
     const [loading, setLoading] = useState(true);
     const [cat, setCat] = useState("");
-    const [blob, setBlob] = useState([]);
 
     useEffect(() => {
         fetch("https://api.thecatapi.com/v1/images/search").then((response) =>
@@ -28,13 +26,24 @@ function App() {
         );
     };
 
-    const Copy = () => {
-        console.log(blob);
-        navigator.share({
-            title: "고양이 탐색기",
-            url: { cat }.cat,
-        });
-    };
+    async function onShare() {
+        const catImg = { cat }.cat;
+
+        if (navigator.share) {
+            navigator
+                .share({
+                    title: "고양이 탐색기",
+                    text: "고양이 탐색기",
+                    url: catImg,
+                })
+                .then(() => {
+                    console.log("sharing success");
+                })
+                .catch(console.error);
+        } else {
+            // fallback
+        }
+    }
 
     return (
         <div className="App">
@@ -49,7 +58,7 @@ function App() {
                 )}
                 <div style={{ marginTop: "20px" }}>
                     <input onClick={Refresh} type="image" src={refresh} />
-                    <input onClick={Copy} type="image" src={share} />
+                    <input onClick={onShare} type="image" src={share} />
                 </div>
             </header>
         </div>
