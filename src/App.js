@@ -39,9 +39,10 @@ function App() {
 
         if (window.Kakao) {
             const kakao = window.Kakao;
+            const key = process.env.REACT_APP_KAKAO;
 
             if (!kakao.isInitialized()) {
-                kakao.init(process.env.REACT_APP_KAKAO);
+                kakao.init(key);
             }
             kakao.Link.sendDefault({
                 objectType: "feed",
